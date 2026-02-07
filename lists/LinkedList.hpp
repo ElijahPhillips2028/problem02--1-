@@ -38,8 +38,7 @@ class LinkedList: public AbstractList<T>
 
     //TODO
     /*Make a head?*/
-  std::size_t maxSize;
-  LinkedList() head(){}
+  std::size_t currentSize;
 };
 
 #include "LinkedList.tpp"
