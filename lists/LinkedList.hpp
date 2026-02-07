@@ -38,6 +38,7 @@ class LinkedList: public AbstractList<T>
 
     //TODO
     /*Make a head?*/
+    Node<T>* head;
   std::size_t currentSize;
 };
 

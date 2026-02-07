@@ -87,31 +87,129 @@ std::size_t LinkedList<T>::getLength() const noexcept
 template <typename T>
 void LinkedList<T>::insert(std::size_t position, const T &item)
 {
-  
-  // TODO
+   /*check if the position is legal*/
+  if(position > currentSize || position < 0 ){
+    return;
+  }
+  /*new node refrence for the chain*/
+  Node<T>* itemNodePtr = new Node<T>(item);
+  /*check if its legal to insert there*/
+  if(position > currentSize || position < 0 ){
+    delete itemNodePtr;
+    return ;
+  }
+  /*if we are inserting at the head*/
+  if(position == 0){
+    itemNodePtr->setNext(head);
+    head = itemNodePtr;
+    currentSize++;
+    return;
+  }
+  /*if we are not inserting at the head*/
+  /*start at the head the use next to shift over to the right*/
+  Node<T>* current = head;
+  for(int i = 0; i < position-1; i++){
+    current = current->getNext();
+  }
+  /*one we at the correct place we then use set for teh node*/
+  itemNodePtr->setNext(current->getNext());
+  /*set the previos node to the new node*/
+  current->setNext(itemNodePtr);
+  /*increase the size*/
+  currentSize++;
+  return;
 }
 
 template <typename T>
 void LinkedList<T>::remove(std::size_t position)
 {
-  // TODO
+     /*check if the position is legal*/
+  if(position > currentSize || position < 0 ){
+    return ;
+  }
+   /*new node refrence for the chain*/
+  Node<T>* itemNodePtr = head->getNext();  
+  /*check if we are removing the head*/
+  if(position == 0){
+    /*move the head to the next item*/
+    itemNodePtr -> setNext(head);
+    head = head->getNext();
+    /*delete the old head*/
+    delete itemNodePtr;
+    /*decrease the size*/
+    currentSize--;
+    return;
+  }
+  /*not removing the head*/
+  /*start at the head the use next to shift over to the right*/
+  Node<T>* current = head;
+  for(int i = 0; i < position-1; i++){
+    current = current->getNext();
+  }
+  /*get the node to be removed*/
+  Node<T>* nodeToRemove = current->getNext();
+  /*set the previous node to point to the next node after the one being removed*/
+  current->setNext(nodeToRemove->getNext());
+  /*delete the node being removed*/
+  delete nodeToRemove;
+  /*decrease the size*/
+  currentSize--;
+  return;
 }
 
 template <typename T>
 void LinkedList<T>::clear()
 {
+  /*go through the list and delete every node*/
+  Node<T>* current = head;
+  while(head != nullptr) {
+    /*go to the next node*/
+    Node<T>* next = current->getNext();
+    /*delete current node*/
+    delete current;
+    /*set current to next node*/
+    current = next;
+  }
+  /*set the head to null and size to 0*/
+  head = nullptr;
+  currentSize = 0;
+  return ;
   // TODO
 }
 
 template <typename T>
 T LinkedList<T>::getEntry(std::size_t position) const
 {
-  // TODO
-  return T();
+    /*check if the position is legal*/
+  if(position > currentSize || position < 0 ){
+    return T();
+  }
+  //if node is the frist
+  if(head == 0){
+    return T();
+  }
+  /*go throug the list untill we reach the position*/
+  Node<T>* current = head;
+  for(int i = 0; i < position; i++){
+    current = current->getNext();
+  }
+  /*return the item at the position*/
+  return current->getItem();
 }
 
 template <typename T>
 void LinkedList<T>::setEntry(std::size_t position, const T &newValue)
 {
-  // TODO
+  /*check if the position is legal*/
+  if(position > currentSize || position < 0 ){
+    return ;
+  }
+  /*go throug the list untill we reach the position*/
+  Node<T>* current = head;
+  for(int i = 0; i < position; i++){
+    current = current->getNext();
+  }
+  /*set the item at the position to the new value*/
+  current->setItem(newValue);
+  return ;
 }
