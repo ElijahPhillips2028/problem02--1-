@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/elilp/Downloads/problem02 (1)/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\test-array-list.dir\\test_ArrayList.cpp.obj -c \"C:\\Users\\elilp\\Downloads\\problem02 (1)\\lists\\test_ArrayList.cpp\"",
+  "file": "C:/Users/elilp/Downloads/problem02 (1)/lists/test_ArrayList.cpp"
+},
+{
+  "directory": "C:/Users/elilp/Downloads/problem02 (1)/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\test-linked-list.dir\\test_LinkedList.cpp.obj -c \"C:\\Users\\elilp\\Downloads\\problem02 (1)\\lists\\test_LinkedList.cpp\"",
+  "file": "C:/Users/elilp/Downloads/problem02 (1)/lists/test_LinkedList.cpp"
+}
+]
